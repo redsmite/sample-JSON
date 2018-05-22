@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON Sandbox</title>
+</head>
+<body>
+	<ul id="people">
+		
+	</ul>
+	<script>
+		// var person ={
+		// 	name: "Brad",
+		// 	age: 35,
+		// 	address:{
+		// 		street:"5 main st",
+		// 		city:"Boston"
+		// 	},
+		// 	children:["Brianna","Nicholas","Jake"]
+		// }
+
+		// // person = JSON.stringify(person);
+		// // person = JSON.parse(person);
+
+		// var people = [
+		// 	{
+		// 		name: "Brad",
+		// 		age: 35
+
+		// 	},
+		// 	{
+		// 		name: "John",
+		// 		age: 40
+		// 	},
+		// 	{
+		// 		name: "Sarah",
+		// 		age: 25
+		// 	}
+		// ]
+
+		// console.log(person.address.street);
+
+		// for (var i=0;i < person.children.length;i++){
+		// console.log(person.children[i]);
+		// }
+
+		// console.log(people[1].name);
+
+		// var output ="";
+		// for (var i=0;i < people.length;i++){
+		// 	// console.log(people[i].name);
+
+		// 	// console.log(people[i].age);
+		// 	output += '<li>'+people[i].name+'</li>';
+
+		// }
+		// document.getElementById('people').innerHTML = output;
+
+		var xmlhttp = new XMLHttpRequest();
+		var url = "people.json";
+
+		xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		    var response= JSON.parse(xmlhttp.responseText);
+		   
+		    var people = response.people;
+
+		    var output ="";
+		for (var i=0;i < people.length;i++){
+			
+			output += '<li>'+people[i].name+'</li>';
+
+		}
+		document.getElementById('people').innerHTML = output;
+		    }
+		};
+
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	</script>
+</body>
+</html>

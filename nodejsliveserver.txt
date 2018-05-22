@@ -1,0 +1,5 @@
+install nodejs from nodejs.org
+add path C:\Program Files\nodejs\
+
+locate folder in cmd
+npm install -g live-server
